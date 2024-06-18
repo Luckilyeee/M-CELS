@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-| **@created on:** 7/23/20,
-| **@author:** prathyushsp,
-| **@version:** v0.0.1
-|
-| **Description:**
-|
-|
-| **Sphinx Documentation Status:**
-"""
-
 from torchvision import models
 import numpy as np
 from torch.autograd import Variable
