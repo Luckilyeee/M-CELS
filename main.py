@@ -33,7 +33,6 @@ WANDB_DRY_RUN = False
 
 
 BASE_SAVE_DIR = 'results_v1/2312/'
-# BASE_SAVE_DIR = '/tmp/'
 if WANDB_DRY_RUN:
     os.environ["WANDB_MODE"] = "dryrun"
 
@@ -54,7 +53,6 @@ if __name__ == '__main__':
     TAG = f'{args.algo}-{args.dataset}-{args.background_data}-{args.background_data_perc}-run-{args.run_id}'
     BASE_SAVE_DIR = BASE_SAVE_DIR + "/" + TAG
 
-    # todo Ramesh: Load black box model -> check this in utils.py
     model = get_model(dataset=args.dataset, input_size = 6, num_classes = 4)
 
     softmax_fn = torch.nn.Softmax(dim=-1)
@@ -104,8 +102,6 @@ if __name__ == '__main__':
             os.system(f'mkdir -p "./wandb/{TAG}/"')
             config['save_dir'] = SAVE_DIR
 
-            # if args.run_mode == 'single' and args.dynamic_replacement == False:
-            #     config = {**config}
 
             if args.run_mode == 'single':
                 config = {**config}
@@ -121,11 +117,6 @@ if __name__ == '__main__':
                 if args.bbm == 'dnn':
                     print(original_signal.shape)
                     target = softmax_fn(model(original_signal.reshape(1, original_signal.shape[0], original_signal.shape[1])))
-
-                    # target = softmax_fn(model(original_signal)) # multivariate
-                    # data_train = data_train.reshape(data_train.shape[0], 1, data_train.shape[1])
-                elif args.bbm == "cnn":
-                    target = softmax_fn(model(original_signal))[0]
                 else:
                     raise Exception(f"Black Box model not supported: {args.bbm}")
             # print("target", target)
@@ -148,15 +139,11 @@ if __name__ == '__main__':
                 explainer.background_data = original_signal
                 explainer.background_label = original_label
 
-            # explainer.timesteps = int(dataset.train_class_0_data[0].shape[0]/args.window_size) #timesteps???
 
             mask, ori_perturbated, target_prob = explainer.generate_saliency(
                 data=original_signal.cpu().detach().numpy(), label=original_label,
                 save_dir=SAVE_DIR, target=target, dataset=dataset)
-            # mask, converted_mask, perturbation_res, ori_perturbated_res, target_prob = explainer.generate_saliency(
-            #     data=original_signal.cpu().detach().numpy(), label=original_label,
-            #     save_dir=SAVE_DIR, target=target, dataset=dataset)
-
+           
             cf = ori_perturbated.flatten()# Convert tensor to NumPy array
             cf_res.append(cf)
 
