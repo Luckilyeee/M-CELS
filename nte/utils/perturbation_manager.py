@@ -1,15 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-| **@created on:** 9/23/20,
-| **@author:** prathyushsp,
-| **@version:** v0.0.1
-|
-| **Description:**
-| 
-|
-| **Sphinx Documentation Status:** 
-"""
-
 from fastdtw import fastdtw
 from scipy.spatial.distance import euclidean
 
