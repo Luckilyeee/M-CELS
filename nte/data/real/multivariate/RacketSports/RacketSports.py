@@ -2,7 +2,8 @@ from sktime.datasets import load_from_tsfile
 from sklearn.preprocessing import LabelEncoder
 import os
 
-DATA_PATH = "/home/dmlab/Peiyu/MTS/DATA"
+#download the data .ts files from the UEA dataset website and update this data path
+DATA_PATH = "MTS/DATA"
 
 name = "RacketSports"
 
