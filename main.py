@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     ds = get_run_configuration(args=args, dataset=dataset, TASK_ID=args.task_id)
 
-    res_path = f"dsaa_norm/{args.dataset}/"
+    res_path = f"mcels/{args.dataset}/"
     os.system(f'mkdir -p "{res_path}"')
 
     cf_res = []
