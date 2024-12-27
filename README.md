@@ -1,7 +1,7 @@
 # M-CELS: Counterfactual Explanation for Multivariate Time Series Data Guided by Learned Saliency Maps
 This is the repository for our paper titled "M-CELS: Counterfactual Explanation for Multivariate Time Series Data Guided by Learned Saliency Maps". This paper has been accepted at the [23rd IEEE International Conference on Machine Learning and Applications (ICMLA)](https://www.icmla-conference.org/icmla24/). 
 
-# Approach
+# Architecture
 ![main](fig2.png)
 
 # Prerequisites and Instructions
